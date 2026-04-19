@@ -1,38 +1,126 @@
-* { margin: 0; padding: 0; box-sizing: border-box; }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    min-height: 100vh;
-    color: white;
+    line-height: 1.6;
+    color: #333;
+    overflow-x: hidden;
 }
 
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
 
+/* Navigation */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(20px);
+    z-index: 1000;
+    padding: 1rem 0;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #667eea;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+}
+
+.nav-menu a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    transition: all 0.3s;
+}
+
+.nav-menu a:hover {
+    color: #667eea;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: #333;
+    transition: 0.3s;
+}
+
+/* Hero Section */
 .hero {
     min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     display: flex;
     align-items: center;
     justify-content: center;
+    color: white;
     text-align: center;
-    padding: 100px 20px;
+    padding: 120px 20px 60px;
 }
 
-.hero-content h1 {
+.hero-content {
+    max-width: 900px;
+}
+
+.avatar {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 6px solid rgba(255,255,255,0.3);
+    margin-bottom: 2rem;
+    animation: float 4s ease-in-out infinite;
+}
+
+.personal-info h1 {
     font-size: 3rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .highlight {
     background: linear-gradient(45deg, #ff6b6b, #ffd93d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
-.hero-content p { font-size: 1.2rem; margin-bottom: 3rem; }
+.personal-info h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+}
 
 /* 🕐 ĐỒNG HỒ TRÒN */
-.clock-container { margin: 3rem 0; }
+.clock-container {
+    margin: 3rem 0;
+}
 
 .analog-clock {
     background: rgba(255,255,255,0.15);
@@ -143,7 +231,6 @@ body {
     opacity: 0.9;
 }
 
-/* Social */
 .social-links {
     display: flex;
     justify-content: center;
@@ -174,21 +261,23 @@ body {
 .tiktok { background: #000; }
 .github { background: #333; }
 
-@media (max-width: 768px) {
-    .hero-content h1 { font-size: 2rem; }
-    .clock-face { width: 200px; height: 200px; }
-}
-/* ===== CONTACT SECTION ===== */
-#contact {
+/* About */
+.about {
     padding: 100px 0;
     background: #f8f9fa;
+    text-align: center;
 }
 
 .section-title {
-    text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     color: #333;
+}
+
+/* Contact */
+.contact {
+    padding: 100px 0;
+    background: white;
 }
 
 .contact-content {
@@ -212,9 +301,9 @@ body {
     gap: 1rem;
     margin-bottom: 1.5rem;
     padding: 1.5rem;
-    background: white;
+    background: #f8f9fa;
     border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
 }
 
 .contact-item i {
@@ -224,7 +313,7 @@ body {
 }
 
 .contact-form {
-    background: white;
+    background: #f8f9fa;
     padding: 2.5rem;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
@@ -267,10 +356,31 @@ body {
     box-shadow: 0 10px 25px rgba(102,126,234,0.4);
 }
 
+/* Animations */
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
-    .contact-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+    .hamburger { display: flex; }
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        text-align: center;
+        padding: 2rem 0;
+        transition: 0.3s;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     }
+    .nav-menu.active { left: 0; }
+    
+    .hero-content h1 { font-size: 2.2rem; }
+    .contact-content { grid-template-columns: 1fr; gap: 2rem; }
+    .social-links { gap: 1rem; }
+    .social-btn { width: 55px; height: 55px; }
 }
