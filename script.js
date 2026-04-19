@@ -1,31 +1,29 @@
 // 🕐 ĐỒNG HỒ TRÒN ANALOG - REAL TIME
 console.log('🚀 Loading analog clock...');
 
+// 🔥 ĐỒNG HỒ FIX GIỜ 24H CHÍNH XÁC
 function updateClock() {
     const now = new Date();
     
-    // Thời gian hiện tại
-    let hours = now.getHours();
+    // GIỜ 24H ĐÚNG - KHÔNG chuyển 12h
+    let hours = now.getHours();      // 0-23
     let minutes = now.getMinutes();
     let seconds = now.getSeconds();
     
-    console.log(`Clock update: ${hours}:${minutes}:${seconds}`);
-    
-    // Digital display
+    // Digital display 24h format
     document.getElementById('digitalHour').textContent = hours.toString().padStart(2, '0');
     document.getElementById('digitalMinute').textContent = minutes.toString().padStart(2, '0');
     document.getElementById('digitalSecond').textContent = seconds.toString().padStart(2, '0');
     
-    // Ngày tháng
+    // Ngày tháng Việt
     const days = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
-    const months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
-    const dateStr = `${days[now.getDay()]}, ${now.getDate()}/${months[now.getMonth()]}/${now.getFullYear()}`;
+    const dateStr = `${days[now.getDay()]}, ${now.getDate()}/${(now.getMonth()+1).toString().padStart(2,'0')}/${now.getFullYear()}`;
     document.getElementById('clockDate').textContent = dateStr;
     
-    // Kim đồng hồ (0-360 độ)
-    const secondDeg = (seconds * 6);  // 360/60 = 6
-    const minuteDeg = (minutes * 6) + (seconds * 0.1);
-    const hourDeg = (hours % 12 * 30) + (minutes * 0.5);
+    // Kim đồng hồ (góc chính xác)
+    const secondDeg = seconds * 6;           // 6deg/giây
+    const minuteDeg = minutes * 6 + seconds * 0.1;  // 6deg/phút + 0.1deg/giây
+    const hourDeg = (hours % 12) * 30 + minutes * 0.5;  // 30deg/giờ + 0.5deg/phút
     
     // Rotate kim
     document.getElementById('secondHand').style.transform = `rotate(${secondDeg}deg)`;
