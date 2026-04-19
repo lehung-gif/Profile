@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lê Việt Hưng - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-user"></i> Tên Của Bạn
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home">Trang chủ</a></li>
+                <li><a href="#about">Giới thiệu</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section với Đồng hồ Real-time -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <!-- Avatar -->
+                <div class="avatar-container">
+                    <img src="https://via.placeholder.com/200x200/667eea/ffffff?text=Ảnh+Của+Bạn" alt="Avatar" class="avatar">
+                    <!-- Thay ảnh: upload ảnh vào thư mục images/ rồi sửa src="images/ten-anh.jpg" -->
+                </div>
+
+                <!-- Thông tin cá nhân - DỄ CHỈNH SỬA -->
+                <div class="personal-info">
+                    <h1>Xin chào! Tôi là <span class="highlight">Lê Việt Hưng</span></h1>
+                    <h2>Frontend Developer | [Chuyên môn của bạn]</h2>
+                    <p>
+                        Tuổi: <strong>[20]</strong> | 
+                        Sống tại: <strong>[Hà Nội]</strong> | 
+                        Email: <strong>[lehung010407@gmail.com]</strong>
+                    </p>
+                    <p class="bio">
+                        [Viết về bản thân: Tôi đam mê công nghệ, thích code và sáng tạo. Có X năm kinh nghiệm...]
+                    </p>
+                </div>
+
+                <!-- ĐỒNG HỒ REAL-TIME -->
+                <div class="clock-container">
+                    <div class="clock" id="realTimeClock">
+                        <div class="time" id="time">00:00:00</div>
+                        <div class="date" id="date">Ngày 00/00/0000</div>
+                    </div>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="social-links">
+                    <a href="https://www.facebook.com/leviethwng?locale=vi_VN" target="_blank" class="social-btn fb" title="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/_l.hwnn/" target="_blank" class="social-btn ig" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@hung.le_07" target="_blank" class="social-btn tiktok" title="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="https://github.com/lehung-gif" target="_blank" class="social-btn github" title="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Về Tôi</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                        [Thông tin chi tiết về bạn: Học vấn, kinh nghiệm, thành tựu...]
+                        <br><br>
+                        Sở thích: [Nghe Nhạc♪, Chơi Game🎮, Ngủ🛌💤 ,Gym ]
+                        <br><br>
+                        Mục tiêu: [Trở thành Senior Developer trong 2 năm tới...]
+                    </p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>50+</h3>
+                        <p>Dự án</p>
+                    </div>
+                    <div class="stat">
+                        <h3>2+</h3>
+                        <p>Năm kinh nghiệm</p>
+                    </div>
+                    <div class="stat">
+                        <h3>1000+</h3>
+                        <p>Giờ code</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Liên Hệ</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Thông tin liên hệ</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>[lehung010407@gmail.com]</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>[0866461289]</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>[Địa chỉ - TP Hà Nội]</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <input type="text" placeholder="Họ và tên" required>
+                    <input type="email" placeholder="Email" required>
+                    <textarea placeholder="Tin nhắn của bạn..." rows="5" required></textarea>
+                    <button type="submit" class="btn-primary">Gửi tin nhắn</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Tên Của Bạn. Made with ❤️ và JavaScript</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
