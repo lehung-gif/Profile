@@ -38,3 +38,14 @@ setInterval(updateClock, 1000);
 updateClock(); // Chạy ngay
 
 console.log('✅ Analog clock started! Kiểm tra F12 Console');
+// ===== CONTACT FORM =====
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('🎉 Tin nhắn đã gửi thành công!\nCảm ơn bạn đã liên hệ ❤️');
+            this.reset();
+        });
+    }
+});
