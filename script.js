@@ -48,17 +48,41 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// 🔥 ĐỒNG HỒ REAL-TIME (GIỐNG MÁY TÍNH)
-function updateClock() {
+// 🔥 ĐỒNG HỒ TRÒN ANALOG + DIGITAL REAL-TIME
+function updateAnalogClock() {
     const now = new Date();
     
-    // Thời gian HH:MM:SS
-    const timeString = now.toLocaleTimeString('vi-VN', {
-        hour12: false,
-        hour: '2-digit',
-        minute: '2-digit',
-        second: '2-digit'
-    });
+    const seconds = now.getSeconds();
+    const minutes = now.getMinutes();
+    const hours = now.getHours();
+    
+    // Tính toán góc kim đồng hồ
+    const secondDeg = (seconds / 60) * 360 + 90;
+    const minuteDeg = (minutes / 60) * 360 + (seconds / 60) * 6 + 90;
+    const hourDeg = (hours / 12) * 360 + (minutes / 60) * 30 + 90;
+    
+    // Cập nhật kim
+    document.getElementById('secondHand').style.transform = `rotate(${secondDeg}deg)`;
+    document.getElementById('minuteHand').style.transform = `rotate(${minuteDeg}deg)`;
+    document.getElementById('hourHand').style.transform = `rotate(${hourDeg}deg)`;
+    
+    // Digital time
+    document.getElementById('digitalHour').textContent = hours.toString().padStart(2, '0');
+    document.getElementById('digitalMinute').textContent = minutes.toString().padStart(2, '0');
+    document.getElementById('digitalSecond').textContent = seconds.toString().padStart(2, '0');
+    
+    // Ngày tháng tiếng Việt
+    const weekdays = ['Chủ nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
+    const months = ['Tháng 1', 'Tháng 2', 'Tháng 3', 'Tháng 4', 'Tháng 5', 'Tháng 6',
+                   'Tháng 7', 'Tháng 8', 'Tháng 9', 'Tháng 10', 'Tháng 11', 'Tháng 12'];
+    
+    const dateString = `${weekdays[now.getDay()]}, ${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+    document.getElementById('clockDate').textContent = dateString;
+}
+
+// Cập nhật mỗi 100ms cho mượt mà
+setInterval(updateAnalogClock, 100);
+updateAnalogClock(); // Chạy ngay
     
     // Ngày tháng đầy đủ tiếng Việt
     const dateString = now.toLocaleDateString('vi-VN', {
