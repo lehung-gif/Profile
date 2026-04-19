@@ -9,11 +9,14 @@ function updateClock() {
     let hours = now.getHours();      // 0-23
     let minutes = now.getMinutes();
     let seconds = now.getSeconds();
-    
-    // Digital display 24h format
-    document.getElementById('digitalHour').textContent = hours.toString().padStart(2, '0');
-    document.getElementById('digitalMinute').textContent = minutes.toString().padStart(2, '0');
-    document.getElementById('digitalSecond').textContent = seconds.toString().padStart(2, '0');
+
+    const digitalHour = document.getElementById('digitalHour');
+    const digitalMinute = document.getElementById('digitalMinute');
+    const digitalSecond = document.getElementById('digitalSecond');
+
+    if (digitalHour) digitalHour.textContent = now.getHours().toString().padStart(2, '0');
+    if (digitalMinute) digitalMinute.textContent = now.getMinutes().toString().padStart(2, '0');
+    if (digitalSecond) digitalSecond.textContent = now.getSeconds().toString().padStart(2, '0');
     
     // Ngày tháng Việt
     const days = ['Chủ Nhật', 'Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy'];
